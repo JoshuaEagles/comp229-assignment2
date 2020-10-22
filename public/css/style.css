@@ -1,0 +1,10 @@
+/* style.css - Joshua Eagles - 301078033 - 2020-10-07 */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+
+textarea {
+	resize: none;
+}

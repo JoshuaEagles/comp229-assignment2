@@ -1,0 +1,59 @@
+<!-- contact.ejs - Joshua Eagles - 301078033 - 2020-10-07 -->
+
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/nav.ejs') %>
+
+<div class="container-md">
+	<h1 class="text-center mt-4"><%= title %></h1>
+	<hr class="mb-5">
+		<!-- Contact Info Panel -->
+		<div class="row">
+			<div class="col-4-md jumbotron mx-auto">
+				<div class="text-center">
+					joshuaeagles1@gmail.com<br>
+					111-111-1111<br>
+					123 Street Ave. Toronto, ON<br>
+					M1M 1M1
+				</div>
+			</div>
+		</div>
+
+		<!-- Interactive Form -->
+		<form action="contact_submit" method="get" accept-charset="utf-8">
+			<!-- Responsive text inputs in one row that separate to multiple on smaller widths -->
+			<div class="row">
+				<div class="col-lg-3 mb-2">
+					<label for="firstName">First Name</label><br>
+					<input class="w-100" type="text" name="firstName" value="" id="firstName">
+				</div>
+				<div class="col-lg-3 mb-2">
+					<label for="lastName">Last Name</label><br>
+					<input class="w-100" type="text" name="lastName" value="" id="lastName">
+				</div>
+				<div class="col-lg-3 mb-2">
+					<label for="contactNumber">Contact Number</label><br>
+					<input class="w-100" type="text" name="contactNumber" value="" id="contactNumber">
+				</div>
+				<div class="col-lg-3 mb-2">
+					<label for="email">E-mail Address</label><br>
+					<input class="w-100" type="text" name="email" value="" id="email">
+				</div>
+			</div>
+
+			<label for="message">Message</label><br>
+			<textarea class="w-100 mb-3" rows="10" name="message" id="message"></textarea><br>
+
+			<!-- Responsive Submit and Reset buttons -->
+			<div class="row">
+				<div class="col-sm-6">
+					<input class="w-100 mb-2" type="submit" value="Submit" name="submit" id="submit"/>
+				</div>
+				<div class="col-sm-6">
+					<input class="w-100 mb-2" type="reset" value="Reset" name="reset" id="reset"/>
+				</div>
+			</div>
+		</form>
+	<br>
+</div>
+
+<%- include('./partials/footer.ejs') %>
