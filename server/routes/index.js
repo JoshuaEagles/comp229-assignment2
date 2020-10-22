@@ -4,35 +4,40 @@ let express = require('express');
 let router = express.Router();
 
 // GET Root page.
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
 	// Simply redirects to home rather than being a duplicate of home
 	res.redirect('/home')
 });
 
 // GET Home page.
-router.get('/home', function(req, res, next) {
-	res.render('index', { title: 'Home', partialName: 'home' });
+router.get('/home', (req, res, next) => {
+	res.render('index', { title: 'Home', partialName: 'home'});
 });
 
 // GET About Me page.
-router.get('/about', function(req, res, next) {
-	res.render('index', { title: 'About Me', partialName: 'about' });
+router.get('/about', (req, res, next) => {
+	res.render('index', { title: 'About Me', partialName: 'about'});
 });
 
 // GET Projects page.
-router.get('/projects', function(req, res, next) {
-	res.render('index', { title: 'Projects', partialName: 'projects' });
+router.get('/projects', (req, res, next) => {
+	res.render('index', { title: 'Projects', partialName: 'projects'});
 });
 
 // GET Services page.
-router.get('/services', function(req, res, next) {
-	res.render('index', { title: 'Services', partialName: 'services' });
+router.get('/services', (req, res, next) => {
+	res.render('index', { title: 'Services', partialName: 'services'});
 });
 
 // GET Contact Me page.
-router.get('/contact', function(req, res, next) {
+router.get('/contact', (req, res, next) => {
 	// Don't need to provide the partialName since this is a separate view, no partial is used
-	res.render('contact', { title: "Contact Me" });
+	res.render('contact', { title: "Contact Me"});
+});
+
+// GET Login page.
+router.get('/login', (req, res, next) => {
+	res.render('index', {title: 'Login', partialName: 'login'});
 });
 
 module.exports = router;
