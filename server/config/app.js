@@ -7,6 +7,21 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
 let indexRouter = require('../routes/index');
+let loginRouter = require('../routes/login');
+let businessContactsRouter = require('../routes/business_contacts.js');
+
+// database setup
+let mongoose = require('mongoose');
+let DB = require('./db');
+
+// point mongoose to the DB URI
+mongoose.connect(DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
+mongoDB.once('open', ()=>{
+  console.log('Connected to MongoDB...');
+});
 
 let app = express();
 
@@ -21,6 +36,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 
 app.use('/', indexRouter);
+app.use('/login', loginRouter);
+app.use('/business_contacts', businessContactsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,14 @@
+<table class="table table-bordered table-striped">
+	<tr>
+		<th>Name</th>
+		<th>Phone</th>
+		<th>E-mail</th>
+	</tr>
+	<tr>
+		<% for (let i = 0; i < contacts.length; i++) { %>
+			<td><%= contacts[i].name %></td>
+			<td><%= contacts[i].phone %></td>
+			<td><%= contacts[i].email %></td>
+		<% } %>
+	</tr>
+</table>
