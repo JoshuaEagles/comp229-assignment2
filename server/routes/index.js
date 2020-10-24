@@ -1,7 +1,8 @@
-// index.js - Joshua Eagles - 301078033 - 2020-10-22
+// index.js - Joshua Eagles - 301078033 - 2020-10-24
 
 let express = require('express');
 let router = express.Router();
+let controller = require('../controllers/index');
 
 // GET Root page.
 router.get('/', (req, res, next) => {
@@ -10,29 +11,18 @@ router.get('/', (req, res, next) => {
 });
 
 // GET Home page.
-router.get('/home', (req, res, next) => {
-	res.render('index', {title: 'Home', partialName: 'home'});
-});
+router.get('/home', controller.displayHomePage);
 
 // GET About Me page.
-router.get('/about', (req, res, next) => {
-	res.render('index', {title: 'About Me', partialName: 'about'});
-});
+router.get('/about', controller.displayAboutMePage);
 
 // GET Projects page.
-router.get('/projects', (req, res, next) => {
-	res.render('index', {title: 'Projects', partialName: 'projects'});
-});
+router.get('/projects', controller.displayProjectsPage);
 
 // GET Services page.
-router.get('/services', (req, res, next) => {
-	res.render('index', {title: 'Services', partialName: 'services'});
-});
+router.get('/services', controller.displayServicesPage);
 
 // GET Contact Me page.
-router.get('/contact', (req, res, next) => {
-	// Don't need to provide the partialName since this is a separate view, no partial is used
-	res.render('contact', {title: "Contact Me"});
-});
+router.get('/contact', controller.displayContactMePage);
 
 module.exports = router;

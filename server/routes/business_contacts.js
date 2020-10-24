@@ -1,16 +1,11 @@
-// business_contacts.js - Joshua Eagles - 301078033 - 2020-10-22
+// business_contacts.js - Joshua Eagles - 301078033 - 2020-10-24
 
 let express = require('express');
 let router = express.Router();
 
-let businessContacts = require('../models/business_contacts');
+let controller = require('../controllers/business_contacts.js');
 
-router.get('/', (req, res, next) => {
-	let contactsList = null
-	businessContacts.find((err, returnedValues) => {
-		console.log(returnedValues);
-		res.render('index', {title: 'Business Contacts', partialName: 'business_contacts', contacts: returnedValues});
-	});
-});
+// GET Business Contacts List page
+router.get('/', controller.displayContactsList);
 
 module.exports = router;
