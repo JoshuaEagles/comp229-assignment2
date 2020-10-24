@@ -7,3 +7,13 @@ module.exports.displayContactsList = (req, res, next) => {
 		res.render('index', {title: 'Business Contacts', partialName: 'business_contacts', contacts: returnedValues});
 	});
 };
+
+module.exports.displayContactUpdate = (req, res, next) => {
+	let id = req.params.id;
+
+	console.log(id);
+
+	businessContacts.findById(id, (err, targetContact) => {
+		res.render('index', {title: "Update Contact", partialName: 'update', contact: targetContact});
+	});
+};

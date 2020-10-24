@@ -1,28 +1,16 @@
-<!-- login.ejs - Joshua Eagles - 301078033 - 2020-10-22 -->
+<!-- login.ejs - Joshua Eagles - 301078033 - 2020-10-24 -->
 
-<div class="col-6 mx-auto">
-	<form action="login_submit" method="get" accept-charset="utf-8">
+<div class="col-10 col-lg-6 mx-auto">
+	<form class="form" action="login_submit" method="get" accept-charset="utf-8">
 		<!-- Username Input and Label -->
-		<div class="row">
-			<div class="col-4-md mx-auto">
-				<label for="username">Username</label><br>
-			</div>
-			<div class="col-md">
-				<input class="w-100" type="text" name="username" value="" id="username">	
-			</div>
-		</div><br>
+		<label for="username">Username</label><br>
+		<input class="form-control w-100 mb-3" type="text" name="username" value="" id="username">	
 
 		<!-- Password Input and Label -->
-		<div class="row">
-			<div class="col-4-md mx-auto">
-				<label for="password">Password</label>
-			</div>
-			<div class="col-md">
-				<input class="w-100" type="password" name="password" value="" id="password">
-			</div>
-		</div><br>
+		<label for="password">Password</label><br>
+		<input class="form-control w-100 mb-5" type="password" name="password" value="" id="password">
 
 		<!-- Login Button -->
-		<input class="w-100" type="submit" value="Login" name="loginButton" id="loginButton"/>
+		<input class="btn btn-primary w-100" type="submit" value="Login" name="loginButton" id="loginButton"/>
 	</form>
 </div>
