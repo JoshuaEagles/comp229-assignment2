@@ -12,6 +12,7 @@ module.exports.protectContactsList = (req, res, next) => {
 };
 
 module.exports.displayContactsList = (req, res, next) => {
+	// Not the cleanest, but calling sort on the return value of the find() call will sort it before passing it to the callback
 	businessContacts.find((err, returnedContacts) => {
 		res.render('index', {title: 'Business Contacts', partialName: 'business_contacts', contacts: returnedContacts, username: req.user ? req.user.username : ''});
 	}).sort({name: 1});
