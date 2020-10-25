@@ -4,7 +4,6 @@ let businessContacts = require('../models/business_contacts');
 
 // This is added as middleware to redirect to the login page when not authenticated for all pages
 module.exports.protectContactsList = (req, res, next) => {
-	console.log(req.user);
 	if (!req.user)
 	{
 		res.redirect('/login');

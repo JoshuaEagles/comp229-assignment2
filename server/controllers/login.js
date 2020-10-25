@@ -11,17 +11,13 @@ module.exports.displayLoginPage = (req, res, next) => {
 };
 
 module.exports.processLoginPage = (req, res, next) => {
-	console.log('test1');
 	passport.authenticate('local', (err, user, info) => {
 		if (!user) {
-			console.log('test2');
 			req.flash("loginMessages", "Authentication Error");
 			return res.redirect('/login');
 		}
-		console.log('test2.5');
 
 		req.login(user, (err) => {
-			console.log('test3');
 			res.redirect('/business_contacts');
 		});
 	})(req, res, next);

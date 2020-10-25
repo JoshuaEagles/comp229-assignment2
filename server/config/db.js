@@ -2,5 +2,6 @@
 
 module.exports =
 {
-	'URI': 'mongodb://localhost/assignment2'
+	'URI': 'mongodb+srv://dbUser:dbUserPassword@comp229-assignment2.0blpz.mongodb.net/assignment2?retryWrites=true&w=majority',
+	//'URI': 'mongodb://localhost/assignment2'
 }
