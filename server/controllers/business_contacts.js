@@ -1,4 +1,4 @@
-// business_contacts.js - Joshua Eagles - 301078033 - 2020-10-24
+// business_contacts.js - Joshua Eagles - 301078033 - 2020-10-25
 
 let businessContacts = require('../models/business_contacts');
 
@@ -14,7 +14,7 @@ module.exports.protectContactsList = (req, res, next) => {
 
 module.exports.displayContactsList = (req, res, next) => {
 	businessContacts.find((err, returnedContacts) => {
-		res.render('index', {title: 'Business Contacts', partialName: 'business_contacts', contacts: returnedContacts});
+		res.render('index', {title: 'Business Contacts', partialName: 'business_contacts', contacts: returnedContacts, username: req.user ? req.user.username : ''});
 	}).sort({name: 1});
 };
 
@@ -22,7 +22,7 @@ module.exports.displayContactUpdate = (req, res, next) => {
 	let id = req.params.id;
 
 	businessContacts.findById(id, (err, targetContact) => {
-		res.render('index', {title: "Update Contact", partialName: 'update', contact: targetContact});
+		res.render('index', {title: "Update Contact", partialName: 'update', contact: targetContact, username: req.user ? req.user.username : ''});
 	});
 };
 

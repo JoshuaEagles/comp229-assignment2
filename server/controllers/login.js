@@ -5,7 +5,7 @@ let passport = require('passport');
 module.exports.displayLoginPage = (req, res, next) => {
 	if (!req.user) 
 	{
-		return res.render('index', {title: "Login", partialName: "login", messages: req.flash("loginMessages")});
+		return res.render('index', {title: "Login", partialName: "login", messages: req.flash("loginMessages"), username: req.user ? req.user.username : ''});
 	}
 	return res.redirect('/');
 };

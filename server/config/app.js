@@ -63,7 +63,14 @@ passport.use(user.createStrategy());
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
-//user.register(new user({username: "admin"}), "admin", (err) => {console.log('user registered')});
+// Just for testing, since there's no registration page this will create a user if none exists 
+// username: admin, password: admin
+user.find((err, res) => {
+	if (res.length == 0)
+	{
+		user.register(new user({username: "admin"}), "admin", (err) => {console.log('user registered')});
+	}
+});
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);

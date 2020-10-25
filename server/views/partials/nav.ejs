@@ -1,4 +1,4 @@
-<!-- nav.ejs - Joshua Eagles - 301078033 - 2020-10-07 -->
+<!-- nav.ejs - Joshua Eagles - 301078033 - 2020-10-25 -->
 
 <!-- Modified version of the navbar template from bootstraps documentation -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -29,6 +29,17 @@
 			<li class="nav-item <%= (title == "Contact Me") ? "active" : "" %>">
 				<a class="nav-link" href="/contact">Contact Me</a>
 			</li>
+
+			<!-- Display Login Button if not authenticated, otherwise display Business Contacts List button -->
+			<% if (username) { %>
+				<li class="nav-item <%= (title == "Business Contacts") ? "active" : "" %>">
+					<a class="nav-link" href="/business_contacts">Business Contacts</a>
+				</li>
+			<% } else { %>
+				<li class="nav-item <%= (title == "Login") ? "active" : "" %>">
+					<a class="nav-link" href="/login">Login</a>
+				</li>
+			<% } %>
 		</ul>
 	</div>
 </nav>	
