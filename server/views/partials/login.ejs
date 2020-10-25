@@ -1,6 +1,12 @@
-<!-- login.ejs - Joshua Eagles - 301078033 - 2020-10-24 -->
+<!-- login.ejs - Joshua Eagles - 301078033 - 2020-10-25 -->
 
 <div class="col-10 col-lg-6 mx-auto">
+	<% if (messages.length > 0) { %>
+		<div class="alert alert-danger text-center">
+			<%= messages %>
+		</div>
+	<% } %>
+
 	<form class="form" method="post">
 		<!-- Username Input and Label -->
 		<label for="username">Username</label><br>
