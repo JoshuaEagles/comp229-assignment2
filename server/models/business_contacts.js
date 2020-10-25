@@ -1,8 +1,8 @@
-// business_contacts.js - Joshua Eagles - 301078033 - 2020-10-22
+// business_contacts.js - Joshua Eagles - 301078033 - 2020-10-25
 
 let mongoose = require('mongoose');
 
-let contactsModel = mongoose.Schema(
+let contactsSchema = mongoose.Schema(
 {
 	name: String,
 	phone: String,
@@ -12,4 +12,4 @@ let contactsModel = mongoose.Schema(
 	collection: "business_contacts"
 });
 
-module.exports = mongoose.model("business_contacts", contactsModel);
+module.exports = mongoose.model("business_contacts", contactsSchema);

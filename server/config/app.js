@@ -1,10 +1,18 @@
-// app.js - Joshua Eagles - 301078033 - 2020-10-22
+// app.js - Joshua Eagles - 301078033 - 2020-10-25
 
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+
+// Authentication Modules
+let session = require('express-session');
+let passport = require('passport');
+let user = require('../models/user');
+
+// Used for messaging
+let flash = require('connect-flash');
 
 let indexRouter = require('../routes/index');
 let loginRouter = require('../routes/login');
@@ -34,6 +42,28 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
+
+// Setup express-session
+let auth = require('./auth');
+app.use(session({
+	secret: auth.secret,
+	saveUninitialized: false, 
+	resave: false,
+}));
+
+// Setup flash 
+app.use(flash());
+
+// Setup passport and authentication
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(user.createStrategy());
+
+// Setup serialize and deserializing the user for passport 
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
+
+//user.register(new user({username: "admin"}), "admin", (err) => {console.log('user registered')});
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
