@@ -1,14 +1,27 @@
 <table class="table table-bordered table-striped">
-	<tr>
-		<th>Name</th>
-		<th>Phone</th>
-		<th>E-mail</th>
-	</tr>
-	<tr>
-		<% for (let i = 0; i < contacts.length; i++) { %>
-			<td><%= contacts[i].name %></td>
-			<td><%= contacts[i].phone %></td>
-			<td><%= contacts[i].email %></td>
-		<% } %>
-	</tr>
+	<thead class="thead-dark">
+		<tr>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>E-mail</th>
+			<th></th>
+		</tr>
+	</thead>
+	<% for (let i = 0; i < contacts.length; i++) { %>
+		<tr>
+			<td class="col-4"><%= contacts[i].name %></td>
+			<td class="col-3"><%= contacts[i].phone %></td>
+			<td class="col-3"><%= contacts[i].email %></td>
+			<td class="col-2">
+				<div class="row">
+					<div class="col">
+						<a class="btn btn-primary w-100" href="/business_contacts/edit/<%= contacts[i]._id %>">Edit</a>
+					</div>
+					<div class="col">
+						<a class="btn btn-danger w-100" href="/business_contacts/delete/<%= contacts[i]._id %>">Delete</a>
+					</div>
+				</div>
+			</td>
+		</tr>
+	<% } %>
 </table>

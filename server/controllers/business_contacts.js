@@ -3,17 +3,36 @@
 let businessContacts = require('../models/business_contacts');
 
 module.exports.displayContactsList = (req, res, next) => {
-	businessContacts.find((err, returnedValues) => {
-		res.render('index', {title: 'Business Contacts', partialName: 'business_contacts', contacts: returnedValues});
-	});
+	businessContacts.find((err, returnedContacts) => {
+		res.render('index', {title: 'Business Contacts', partialName: 'business_contacts', contacts: returnedContacts});
+	}).sort({name: 1});
 };
 
 module.exports.displayContactUpdate = (req, res, next) => {
 	let id = req.params.id;
 
-	console.log(id);
-
 	businessContacts.findById(id, (err, targetContact) => {
 		res.render('index', {title: "Update Contact", partialName: 'update', contact: targetContact});
+	});
+};
+
+module.exports.processContactUpdate = (req, res, next) => {
+	let id = req.params.id;
+
+	let updatedContact = businessContacts({
+		"_id": id,
+		"name": req.body.name,
+		"phone": req.body.phone,
+		"email": req.body.email
+	});
+
+	businessContacts.updateOne({_id: id}, updatedContact, (err) => {
+		res.redirect('/business_contacts');
+	});
+};
+
+module.exports.processContactDelete = (req, res, next) => {
+	businessContacts.deleteOne({_id: req.params.id}, (err) => {
+		res.redirect("/business_contacts");
 	});
 };
