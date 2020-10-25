@@ -1,6 +1,7 @@
-<!-- update.ejs - Joshua Eagles - 301078033 - 2020-10-24 -->
+<!-- update.ejs - Joshua Eagles - 301078033 - 2020-10-25 -->
 
 <form class="form" method="post">
+	<!-- Name, Phone Number, and E-mail entry -->
 	<div class="row">
 		<div class="col-md-4 mb-3">
 			<label for="name">Name</label><br>
@@ -16,6 +17,7 @@
 		</div>
 	</div>
 	<hr>
+	<!-- Delete, Submit, and Cancel buttons -->
 	<div class="row">
 		<div class="col-md-4 mb-3">
 			<a class="btn btn-danger w-100" href="/business_contacts/delete/<%= contact._id %>" name="delete" id="delete"/>Delete</a>
